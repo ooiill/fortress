@@ -1,0 +1,66 @@
+{
+  "hosts": {
+    "api-server-host-xxx": {
+      "ip": "10.0.0.99",
+      "port": 22,
+      "user": "ssh-user",
+      "password": "ssh-user-password",
+      "arga": "20191101"
+    },
+    "web-server-host-xxx": {
+      "ip": "10.0.0.88",
+      "port": 22,
+      "user": "ssh-user",
+      "password": "ssh-user-password"
+    }
+  },
+  "fortress": [
+    {
+      "mission": "➡ [PUSH] api code",
+      "type": "sync",
+      "host": "to",
+      "hosts": [
+        "api-server-host-xxx"
+      ],
+      "args": "--exclude=.git",
+      "from": "${PROJECT}/api",
+      "to": "~/"
+    },
+    {
+      "mission": "✪ [BACKUP] api database",
+      "type": "ssh",
+      "hosts": [
+        "api-server-host-xxx"
+      ],
+      "commands": [
+        "mysqldump -h127.0.0.1 -P4306 -uroot -p123456 api-database-name > ~/api.{host.arga}.sql"
+      ]
+    },
+    {
+      "mission": "⬅ [PULL] api database",
+      "type": "sync",
+      "host": "from",
+      "hosts": [
+        "api-server-host-xxx"
+      ],
+      "from": "/home/{host.user}/api.{host.arga}.sql",
+      "to": "${PROJECT}/backup/api.{host.arga}.sql"
+    },
+    {
+      "mission": "▣ [CMD] todo",
+      "type": "ssh",
+      "hosts": [
+        "api-server-host-xxx",
+        "web-server-host-xxx"
+      ],
+      "commands": [
+        "echo I'm `whoami`",
+        "cd /home/\\$(whoami)",
+        "echo My home is: `pwd`",
+        "echo I need sleep moment.. && sleep 2",
+        "echo My ip address blow:",
+        "ifconfig en0 | grep -E 'inet ' | cut -d ' ' -f 2"
+      ]
+    }
+  ]
+}
