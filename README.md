@@ -1,13 +1,25 @@
 ## 简介
 
-Mini fortress program
+在本机和服务器之间做一些交互，比如：远程执行命令、上传文件、下载文件
 
 ## 安装
 
+### 下载
+
 ```shell
-$ go get github.com/ecccho/fortress
-$ cp $GOPATH/src/github.com/ecccho/fortress/fortress.json ~/.fortress.json
-$ go install github.com/ecccho/fortress
+➜  ~ go get github.com/ecccho/fortress
+```
+
+### 拷贝配置文件样例
+
+```shell
+➜  ~ cp $GOPATH/src/github.com/ecccho/fortress/fortress.json ~/.fortress.json
+```
+
+### 编译安装
+
+```shell
+➜  ~ go install github.com/ecccho/fortress
 ```
 
 ## 运行
@@ -18,6 +30,8 @@ $ go install github.com/ecccho/fortress
 ➜  ~ fortress --mode=1             // 半交互式
 ➜  ~ fortress --index=1 --mode=1   // 自动执行，后面是数字与交互式菜单索引保持一致
 ```
+
+## 配置项作用
 
 1. `fortress.json > host` 定义相关主机信息；  
 
