@@ -7,7 +7,7 @@
 ### 下载
 
 ```shell
-➜  ~ go get github.com/ecccho/fortress
+➜  ~ go get github.com/ooiill/fortress
 ```
 
 ### 拷贝配置文件样例
