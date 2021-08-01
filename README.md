@@ -19,7 +19,7 @@
 ### 编译安装
 
 ```shell
-➜  ~ go install github.com/ecccho/fortress
+➜  ~ go install github.com/ooiill/fortress
 ```
 
 ## 运行
