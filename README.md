@@ -13,7 +13,7 @@
 ### 拷贝配置文件样例
 
 ```shell
-➜  ~ cp $GOPATH/src/github.com/ecccho/fortress/fortress.json ~/.fortress.json
+➜  ~ cp $GOPATH/src/github.com/ooiill/fortress/fortress.json ~/.fortress.json
 ```
 
 ### 编译安装
